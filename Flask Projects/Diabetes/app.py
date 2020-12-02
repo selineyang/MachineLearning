@@ -18,7 +18,10 @@ def predict():
     final_features = [np.array(float_features)]
     prediction = model.predict(final_features)
 
-    output = prediction[0]
+    if prediction[0] == 0:
+        output = "Negative!"
+    else:
+        output = "Positive!"
 
     return render_template('index.html', prediction_text='The Patient is $ {}'.format(output))
 
